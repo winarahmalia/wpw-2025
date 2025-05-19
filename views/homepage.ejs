@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homepage - Booking Hotel</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .booked { color: red; }
+    .available { color: green; }
+    li { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h2>Selamat datang, <%= user.fullname %></h2>
+
+  <h3>Daftar Kamar</h3>
+  <ul>
+    <% rooms.forEach(room => { %>
+      <li>
+        <strong><%= room.name %></strong><br>
+        <%= room.description %><br>
+        Status: 
+        <% if (room.status === 'booked') { %>
+          <span class="booked">Sudah dibooking</span><br>
+          <button disabled>Booking</button>
+        <% } else { %>
+          <span class="available">Tersedia</span><br>
+          <a href="/booking/form?roomId=<%= room.id %>">Booking</a>
+        <% } %>
+      </li>
+      <hr>
+    <% }) %>
+  </ul>
+  
+  <a href="/booking/my-bookings">Booking Saya</a> |
+  <a href="/user/profile">Profil Pengguna</a> | 
+  <a href="/logout">Logout</a>
+</body>
+</html>

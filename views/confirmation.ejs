@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Konfirmasi Pemesanan</title>
+</head>
+<body>
+  <h2>Konfirmasi Pemesanan</h2>
+  <p>ID Booking: <%= booking.id %></p>
+  <p>Check-in: <%= booking.checkin.toISOString().split('T')[0] %></p>
+  <p>Check-out: <%= booking.checkout.toISOString().split('T')[0] %></p>
+  <p>Status: <strong>Menunggu Pembayaran</strong></p>
+  <a href="/booking/homepage">Kembali ke Homepage</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Booking</title>
+</head>
+<body>
+  <h2>Form Booking</h2>
+  <form action="/booking/submit" method="POST">
+    <input type="hidden" name="roomId" value="<%= roomId %>">
+    <label>Tanggal Check-in:</label><br>
+    <input type="date" name="checkin" required><br>
+    <label>Tanggal Check-out:</label><br>
+    <input type="date" name="checkout" required><br><br>
+    <button type="submit">Lanjut ke Pembayaran</button>
+  </form>
+</body>
+</html>

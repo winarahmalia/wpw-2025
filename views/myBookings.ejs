@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Saya</title>
+</head>
+<body>
+  <h2>Daftar Booking Saya</h2>
+  <% if (bookings.length === 0) { %>
+    <p>Belum ada booking.</p>
+  <% } else { %>
+    <ul>
+      <% bookings.forEach(b => { %>
+        <li>
+          <strong><%= b.room_name %></strong><br>
+          Check-in: <%= b.checkin %><br>
+          Check-out: <%= b.checkout %><br>
+          <form action="/booking/cancel/<%= b.booking_id %>" method="POST" onsubmit="return confirm('Yakin batalkan?')">
+            <button type="submit">Batalkan</button>
+          </form>
+        </li>
+        <hr>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <a href="/booking/homepage">⬅️ Kembali ke homepage</a>
+</body>
+</html>

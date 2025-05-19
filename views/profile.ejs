@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profil Pengguna</title>
+</head>
+<body>
+  <h2>Profil Pengguna</h2>
+  <form action="/user/update" method="POST">
+    <label>Nama Lengkap:</label><br>
+    <input type="text" name="fullname" value="<%= user.fullname %>" required><br>
+    <label>Nomor Handphone:</label><br>
+    <input type="text" name="phone" value="<%= user.phone %>" required><br><br>
+    <button type="submit">Simpan</button>
+  </form>
+  <br>
+  <a href="/booking/homepage">Kembali ke Homepage</a>
+</body>
+</html>
