@@ -8,12 +8,21 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "body-parser": "^2.2.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
+    "js": "^0.1.0",
     "mysql": "^2.18.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winarahmalia/wpw-2025.git"
+  },
+  "bugs": {
+    "url": "https://github.com/winarahmalia/wpw-2025/issues"
+  },
+  "homepage": "https://github.com/winarahmalia/wpw-2025#readme",
+  "description": ""
 }
