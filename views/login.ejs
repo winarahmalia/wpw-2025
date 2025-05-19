@@ -1,17 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login Pengguna</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <h2>Login Pengguna</h2>
-  <form action="/login" method="POST">
-    <label>Username:</label><br>
-    <input type="text" name="username" required><br>
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
-    <button type="submit">Login</button>
-    <p>Belum punya akun? <a href="/register">Daftar di sini</a></p>
-  </form>
+  <div class="container">
+    <div class="left-panel">
+      <img src="/img/foto 1.png" alt="Login Background" />
+    </div>
+    <div class="right-panel">
+      <h2>Hai, Welcome Back</h2>
+      <form>
+        <label>Login</label>
+        <input type="text" placeholder="Email or phone number" />
+
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" />
+        
+        <div class="toggle">
+          <input type="checkbox" id="show-pass" />
+          <label for="show-pass">Show password</label>
+        </div>
+
+        <a href="#" class="forgot">Forgot password?</a>
+
+        <button type="submit" class="btn-primary">Sign in</button>
+
+        <div class="google-login">
+          <button type="button" class="google-btn">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
+            Or sign in with Google
+          </button>
+        </div>
+
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
