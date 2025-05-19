@@ -11,4 +11,3 @@ router.get('/register', authController.getRegisterPage);
 router.post('/register', authController.postRegister);
 
 module.exports = router;
-//cobaaa push
