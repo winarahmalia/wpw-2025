@@ -45,14 +45,14 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 
 .form {
   display: flex;
-  flex-direction: column  
+  flex-direction: column;
 }
 
 .form input::placeholder {
-  input::placeholder {
   color: white;
   opacity: 0.8;
 }
+
 .form-input {
   margin-bottom: 15px;
   padding: 10px;
@@ -61,6 +61,7 @@ font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: #c5c5c5;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 
 .btn-primary {
   background-color: #3b82f6;
