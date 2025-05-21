@@ -3,44 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login Page</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <title>Login Pengguna</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.15); 
+    }
+
+    .left {
+      width: 70%;
+    }
+
+    .left img {
+      width: 100%;
+      height: 100vh;
+    
+    }
+
+    .right {
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1); /* lembut */
+    }
+
+    .form-box {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .forgot {
+  color: #3366ff ;
+  text-align: right;
+  font-size: 14px;
+  margin-bottom: 15px;
+  display: inline-block;
+    }
+
+    .forgot:hover {
+    color: crimson; /* Warna teks saat di-hover */
+  }
+
+    .forgot a {
+      font-size: 0.9em;
+      text-decoration: none;
+      color:  rgba(61, 49, 49, 0.519);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-login {
+      background-color: #3366ff;
+      color: white;
+    }
+
+    .btn-google {
+      background-color: #333;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .signup {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .signup a {
+      text-decoration: none;
+      color: #3366ff;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left, .right {
+        width: 100%;
+      }
+
+      .left img {
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <div class="sisi-kiri">
-      <img src="/img/foto 1.png" alt="Login Background" />
+    <div class="left">
+      <img src="/img/foto 2.jpg" alt="Login Image" />
     </div>
-    <div class="sisi-kanan">
-      <h2>Hai, Welcome Back</h2>
-      <form>
-        <label>Login</label>
-        <input type="text" placeholder="Email or phone number" />
+    <div class="right">
+      <div class="form-box">
+        <h2>Hai, Welcome Back</h2>
+        <form action="/login" method="POST">
+          <label>Login</label>
+          <input type="text" name="username" placeholder="Email or phone number" required>
 
-        <label>Password</label>
-        <input type="password" placeholder="Enter password" />
-        
-        <div class="toggle">
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-          </label>
-        </div>
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Enter password" required>
 
-        <a href="#" class="forgot">Forgot password?</a>
+          <div >
+            <a href="#" class="forgot">Forgot password?</a>
+          </div>
 
-        <button type="submit" class="btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-login">Sign in</button>
 
-        <div class="google-login">
-          <button type="button" class="google-btn">
-            <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
-            Or sign in with Google
+          <button type="button" class="btn btn-google">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png"/> Or sign in with Google
           </button>
+        </form>
+
+        <div class="signup">
+          Don’t have an account? <a href="/register">Sign up</a>
         </div>
-        <div class="sign-up">
-        <p>Don't have an account? <a href="#">Sign up</a></p>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 </body>

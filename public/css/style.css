@@ -46,24 +46,21 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 .form {
   display: flex;
   flex-direction: column;
-}
+} 
 
-.form input::placeholder {
-  color: white;
-  opacity: 0.8;
-}
-
-.form-input {
-  margin-bottom: 15px;
-  padding: 10px;
+.form input{
+  width: 95%;
+   color: rgb(17, 2, 2);
+  border: none;
+  padding: 12px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #c5c5c5;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  cursor: pointer;
+  margin: 10px 0;
 }
 
 
 .btn-primary {
+  width: 50%;
   background-color: #3b82f6;
   color: white;
   border: none;
@@ -73,16 +70,20 @@ font-family: Georgia, 'Times New Roman', Times, serif;
   margin: 10px 0;
 }
 
+.btn-primary:active{
+  background-color: darkblue; /* warna saat dipencet */
+}
+
 .google-btn {
   background: #333;
   color: white;
   border: none;
   padding: 12px;
   border-radius: 8px;
-  width: 100%;
+  width: 50%;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   justify-content: center;
   margin-bottom: 10px;
 }

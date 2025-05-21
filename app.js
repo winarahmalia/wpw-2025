@@ -1,15 +1,28 @@
-const express = require("express");
+const express = require('express');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+const authRoutes = require('./routes/authRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
+const userRoutes = require('./routes/userRoutes');
+
 const app = express();
-const path = require("path");
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static("public"));
-app.set("view engine", "ejs");
+app.use(session({
+    secret: 'rahasia123',
+    resave: false,
+    saveUninitialized: true
+}));
 
-app.get("/", (req, res) => {
-  res.render("login");
-});
+// Routes
+app.use('/', authRoutes);
+app.use('/booking', bookingRoutes);
+app.use('/user', userRoutes);
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server berjalan di http://localhost:${PORT}`);
+app.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
 });
