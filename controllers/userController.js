@@ -4,7 +4,7 @@ exports.profile = (req, res) => {
     const user = req.session.user;
     res.render('profile', { user });
 };
-
+//halo
 exports.updateProfile = (req, res) => {
 
   const userId = req.session.user.id;
