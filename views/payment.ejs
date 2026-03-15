@@ -1,15 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Proses Pembayaran</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proses Pembayaran - Hotel De Luna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c2c2c;
+      --accent-color: #d4a373;
+      --bg-color: #fcf8f1;
+      --white: #ffffff;
+      --text-muted: #666;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--primary-color);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .payment-container {
+      background: var(--white);
+      max-width: 450px;
+      width: 100%;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+
+    .divider {
+      width: 50px;
+      height: 2px;
+      background: var(--accent-color);
+      margin: 0 auto 30px;
+    }
+
+    .bank-info {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px dashed var(--accent-color);
+      margin-bottom: 30px;
+    }
+
+    .bank-info p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+    }
+
+    .account-number {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--accent-color);
+      letter-spacing: 1px;
+      margin: 10px 0;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+
+    button {
+      width: 100%;
+      background: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #000;
+      transform: translateY(-2px);
+    }
+
+    .note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Pembayaran</h2>
-  <p>Silakan bayar ke rekening Bank ABC: 123456789 a.n Hotel Hebat</p>
-  <form action="/booking/konfirmasi" method="POST">
-    <label>Upload Bukti Pembayaran (simulasi):</label><br>
-    <input type="text" name="payment_code" placeholder="Masukkan kode transaksi" required><br><br>
-    <button type="submit">Konfirmasi</button>
-  </form>
+
+  <div class="payment-container">
+    <h2>Pembayaran</h2>
+    <div class="divider"></div>
+    
+    <p style="font-size: 0.9rem; color: var(--text-muted);">Silakan lakukan transfer ke rekening berikut:</p>
+    
+    <div class="bank-info">
+      <p><strong>Bank ABC</strong></p>
+      <span class="account-number">1234 5678 90</span>
+      <p>a.n <strong>Hotel De Luna</strong></p>
+    </div>
+
+    <form action="/booking/konfirmasi" method="POST">
+      <div class="form-group">
+        <label for="payment_code">Kode Transaksi / Bukti Pembayaran</label>
+        <input type="text" id="payment_code" name="payment_code" placeholder="Contoh: TRX-99821X" required>
+      </div>
+      
+      <button type="submit">Konfirmasi Pembayaran</button>
+    </form>
+
+    <p class="note">Pastikan nominal transfer sudah sesuai dengan harga kamar. Proses verifikasi biasanya memakan waktu 5-10 menit.</p>
+  </div>
+
 </body>
 </html>

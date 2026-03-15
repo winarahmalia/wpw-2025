@@ -4,125 +4,213 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login Pengguna</title>
+  <!-- Import Font & Ikon -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Reset & Body Styling */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    .container {
-      display: flex;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.15); 
-    }
-
-    .left {
-      width: 70%;
-    }
-
-    .left img {
-      width: 100%;
-      height: 100vh;
-    
-    }
-
-    .right {
-      width: 30%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #899FD4 0%);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1); /* lembut */
+      min-height: 100vh;
+      overflow: hidden; /* Mencegah scroll yang tidak perlu */
+    }
+
+    /* Container Utama */
+    .container {
+      display: flex;
+      width: 100%;
+      max-width: 1000px;
+      min-height: 600px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      overflow: hidden;
+      margin: 20px;
+    }
+
+    /* Sisi Kiri (Gambar) */
+    .left {
+      width: 55%;
+      background: url('/img/foto 1.png') no-repeat center center;
+      background-size: cover;
+      transition: width 0.5s ease-in-out;
+    }
+    /* Ganti URL di atas dengan gambar Anda sendiri, contoh: /img/foto 2.jpg */
+
+
+    /* Sisi Kanan (Formulir) */
+    .right {
+      width: 45%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+      transition: width 0.5s ease-in-out;
     }
 
     .form-box {
       width: 100%;
       max-width: 350px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #333;
       text-align: center;
     }
 
-    label {
-      display: block;
-      margin: 10px 0 5px;
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 30px;
+      font-size: 15px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
     }
 
     input[type="text"],
     input[type="password"] {
       width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 12px 15px 12px 45px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+
+    .options {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
     }
 
     .forgot {
-  color: #3366ff ;
-  text-align: right;
-  font-size: 14px;
-  margin-bottom: 15px;
-  display: inline-block;
-    }
-
-    .forgot:hover {
-    color: crimson; /* Warna teks saat di-hover */
-  }
-
-    .forgot a {
-      font-size: 0.9em;
+      font-size: 14px;
       text-decoration: none;
-      color:  rgba(61, 49, 49, 0.519);
+      color: #667eea;
+      font-weight: 500;
+    }
+    .forgot:hover {
+      text-decoration: underline;
     }
 
     .btn {
       width: 100%;
-      padding: 10px;
-      margin-top: 15px;
+      padding: 12px;
       border: none;
-      border-radius: 4px;
-      font-weight: bold;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
       cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
     }
 
     .btn-login {
-      background-color: #3366ff;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(0,0,0,0.15);
     }
 
     .btn-google {
-      background-color: #333;
-      color: white;
+      background-color: #fff;
+      color: #555;
+      border: 1px solid #ddd;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
     }
+    .btn-google:hover {
+      background-color: #f7f7f7;
+      border-color: #ccc;
+    }
+    .btn-google img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .separator {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #aaa;
+      margin: 25px 0;
+    }
+    .separator::before, .separator::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #ddd;
+    }
+    .separator:not(:empty)::before { margin-right: .5em; }
+    .separator:not(:empty)::after { margin-left: .5em; }
 
     .signup {
       text-align: center;
-      margin-top: 15px;
+      margin-top: 25px;
+      color: #555;
     }
 
     .signup a {
       text-decoration: none;
-      color: #3366ff;
+      color: #667eea;
+      font-weight: 600;
+    }
+    .signup a:hover {
+      text-decoration: underline;
     }
 
-    @media (max-width: 768px) {
+    /* Responsive untuk Tablet dan Ponsel */
+    @media (max-width: 900px) {
       .container {
         flex-direction: column;
+        min-height: auto;
+        max-width: 450px;
       }
-
-      .left, .right {
+      .left {
         width: 100%;
+        height: 250px; /* Tinggi gambar di mobile */
+        min-height: 250px;
       }
-
-      .left img {
-        height: 200px;
+      .right {
+        width: 100%;
+        padding: 30px;
       }
     }
   </style>
@@ -130,28 +218,37 @@
 <body>
   <div class="container">
     <div class="left">
-      <img src="/img/foto 2.jpg" alt="Login Image" />
+      <!-- Ganti URL gambar di CSS, bukan di sini -->
     </div>
     <div class="right">
       <div class="form-box">
-        <h2>Hai, Welcome Back</h2>
+        <h2>Hai, Welcome Back!</h2>
+        <p class="subtitle">Sign in to continue your journey.</p>
+        
+        <!-- Backend logic tetap sama -->
         <form action="/login" method="POST">
-          <label>Login</label>
-          <input type="text" name="username" placeholder="Email or phone number" required>
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" placeholder="Email or phone number" required>
+          </div>
 
-          <label>Password</label>
-          <input type="password" name="password" placeholder="Enter password" required>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Enter password" required>
+          </div>
 
-          <div >
+          <div class="options">
             <a href="#" class="forgot">Forgot password?</a>
           </div>
 
-          <button type="submit" class="btn btn-login">Sign in</button>
-
-          <button type="button" class="btn btn-google">
-            <img src="https://img.icons8.com/color/16/000000/google-logo.png"/> Or sign in with Google
-          </button>
+          <button type="submit" class="btn btn-login">Sign In</button>
         </form>
+
+        <div class="separator">or</div>
+
+        <button type="button" class="btn btn-google">
+          <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google Logo"/> Sign in with Google
+        </button>
 
         <div class="signup">
           Don’t have an account? <a href="/register">Sign up</a>

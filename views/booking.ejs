@@ -1,17 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Form Booking</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Booking - Hotel De Luna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c2c2c;
+      --accent-color: #d4a373;
+      --bg-color: #fcf8f1;
+      --white: #ffffff;
+      --text-muted: #666;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--primary-color);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .booking-container {
+      background: var(--white);
+      max-width: 450px;
+      width: 100%;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      width: 50px;
+      height: 2px;
+      background: var(--accent-color);
+      margin: 0 auto 30px;
+    }
+
+    .room-badge {
+      display: inline-block;
+      padding: 5px 15px;
+      background: var(--bg-color);
+      color: var(--accent-color);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    input[type="date"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+      color: var(--primary-color);
+      transition: border-color 0.3s;
+    }
+
+    input[type="date"]:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      background-color: #fffdfa;
+    }
+
+    .info-box {
+      background: #fdfaf5;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 25px;
+      font-size: 0.85rem;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    button {
+      width: 100%;
+      background: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .back-btn {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+
+    .back-btn:hover {
+      color: var(--accent-color);
+    }
+  </style>
 </head>
 <body>
-  <h2>Form Booking</h2>
-  <form action="/booking/submit" method="POST">
-    <input type="hidden" name="roomId" value="<%= roomId %>">
-    <label>Tanggal Check-in:</label><br>
-    <input type="date" name="checkin" required><br>
-    <label>Tanggal Check-out:</label><br>
-    <input type="date" name="checkout" required><br><br>
-    <button type="submit">Lanjut ke Pembayaran</button>
-  </form>
+
+  <div class="booking-container">
+    <div class="room-badge">Luxury Reservation</div>
+    <h2>Atur Jadwal</h2>
+    <div class="divider"></div>
+
+    <form action="/booking/submit" method="POST">
+      <input type="hidden" name="roomId" value="<%= roomId %>">
+
+      <div class="form-group">
+        <label>Tanggal Check-in</label>
+        <input type="date" name="checkin" required>
+      </div>
+
+      <div class="form-group">
+        <label>Tanggal Check-out</label>
+        <input type="date" name="checkout" required>
+      </div>
+
+      <div class="info-box">
+        <span>ℹ️</span>
+        <p style="margin: 0;">Waktu check-in standar dimulai pukul 14:00 WIB.</p>
+      </div>
+
+      <button type="submit">Lanjut ke Pembayaran</button>
+    </form>
+
+    <a href="/booking/homepage" class="back-btn">Batal dan Kembali</a>
+  </div>
+
 </body>
 </html>

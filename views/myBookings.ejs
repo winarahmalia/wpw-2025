@@ -1,28 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Booking Saya</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Saya - Hotel De Luna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c2c2c; /* Gelap elegan seperti gallery */
+      --accent-color: #d4a373;  /* Warna emas/krem gelap */
+      --bg-color: #fcf8f1;      /* Krem terang sesuai homepage */
+      --card-bg: #ffffff;
+      --text-main: #333;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+      margin: 10px auto;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .booking-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .booking-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.3s ease;
+      border-left: 5px solid var(--accent-color);
+    }
+
+    .booking-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .info h3 {
+      margin: 0 0 10px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
+
+    .info p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .btn-cancel {
+      background-color: #e63946;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .btn-cancel:hover {
+      background-color: #c1121f;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 50px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .back-link {
+      margin-top: 30px;
+      text-decoration: none;
+      color: var(--accent-color);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover {
+      color: var(--primary-color);
+    }
+
+    /* Responsif untuk HP */
+    @media (max-width: 600px) {
+      .booking-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h2>Daftar Booking Saya</h2>
-  <% if (bookings.length === 0) { %>
-    <p>Belum ada booking.</p>
-  <% } else { %>
-    <ul>
-      <% bookings.forEach(b => { %>
-        <li>
-          <strong><%= b.room_name %></strong><br>
-          Check-in: <%= b.checkin %><br>
-          Check-out: <%= b.checkout %><br>
-          <form action="/booking/cancel/<%= b.booking_id %>" method="POST" onsubmit="return confirm('Yakin batalkan?')">
-            <button type="submit">Batalkan</button>
-          </form>
-        </li>
-        <hr>
-      <% }) %>
-    </ul>
-  <% } %>
 
-  <a href="/booking/homepage">⬅️ Kembali ke homepage</a>
+  <div class="container">
+    <h2>Daftar Booking Saya</h2>
+
+    <% if (bookings.length === 0) { %>
+      <div class="empty-state">
+        <p>Belum ada riwayat booking yang ditemukan.</p>
+      </div>
+    <% } else { %>
+      <ul class="booking-list">
+        <% bookings.forEach(b => { %>
+          <li class="booking-card">
+            <div class="info">
+              <h3><%= b.room_name %></h3>
+              <p>📅 <strong>Check-in:</strong> <%= b.checkin %></p>
+              <p>🚪 <strong>Check-out:</strong> <%= b.checkout %></p>
+            </div>
+            <form action="/booking/cancel/<%= b.booking_id %>" method="POST" onsubmit="return confirm('Yakin ingin membatalkan pesanan ini?')">
+              <button type="submit" class="btn-cancel">Batalkan</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+
+    <a href="/booking/homepage" class="back-link">
+      <span>←</span> Kembali ke Homepage
+    </a>
+  </div>
+
 </body>
 </html>
