@@ -4,7 +4,7 @@ const db = require('../config/db'); // sesuaikan path jika perlu
 
 const bookingController = require('../controllers/bookingController');
 
-router.get('/', bookingController.getHomepage);
+router.get('/', bookingController.homepage);
 router.get('/form', bookingController.bookingForm);
 router.post('/submit', bookingController.submitBooking);
 router.get('/confirmation/:id', bookingController.confirmation);
