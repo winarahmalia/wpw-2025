@@ -1,12 +1,18 @@
 const db = require('../config/db');
 
 exports.profile = (req, res) => {
+if (!req.session.user) {
+        return res.redirect('/login');
+    }
+
     const user = req.session.user;
     res.render('profile', { user });
 };
 //halo
 exports.updateProfile = (req, res) => {
-
+if (!req.session.user) {
+        return res.redirect('/login');
+    }
   const userId = req.session.user.id;
   const { fullname, phone } = req.body;
 

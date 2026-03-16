@@ -12,6 +12,11 @@ exports.bookingForm = (req, res) => {
 };
 
 exports.submitBooking = (req, res) => {
+
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+    
     const { checkin, checkout, roomId } = req.body;
     const userId = req.session.user.id;
 
@@ -49,6 +54,11 @@ exports.submitBooking = (req, res) => {
 };
 
 exports.userBookings = (req, res) => {
+
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+
     const userId = req.session.user.id;
 
     const sql = `
