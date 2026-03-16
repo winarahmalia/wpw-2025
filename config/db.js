@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -10,8 +10,11 @@ const db = mysql.createConnection({
 });
 
 db.connect((err) => {
-    if (err) throw err;
-    console.log('Connected to database!');
+  if (err) {
+    console.error('Gagal koneksi ke Aiven:', err.stack);
+    return;
+  }
+  console.log('Terhubung ke database Aiven!');
 });
 
 module.exports = db;
